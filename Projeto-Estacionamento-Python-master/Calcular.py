@@ -123,68 +123,32 @@ class Calcular(object):
                     self.__lbtarifa["text"] = "Valor da tarifa = R$ " + str(5.00)
 
 
-                elif totalminutos > 65 and totalminutos <= 125:
-                    hora = 2.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(5.00 + ((hora - 1) * 2))
+                elif totalminutos > 65 and totalminutos <= 185:
+                    minuto = (totalminutos - 60) % 60
+                    hora = ((totalminutos - 60) - minuto)/ 60
+
+                    if minuto > 0:
+
+                        self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(7.00 + (hora * 2))
+
+                    else:
+                        self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(5.00 + (hora * 2))
 
 
-                elif totalminutos > 125 and totalminutos <= 185:
-                    hora = 3.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(5.00 + ((hora - 1) * 2))
+                elif totalminutos > 185:
 
+                    tempo_depois_de_10hr = (totalminutos - 720)
+                    periodo_quebrado = (totalminutos - 720) % 720
+                    periodo = (tempo_depois_de_10hr - periodo_quebrado) / 720
 
-                elif totalminutos > 185 and totalminutos <= 725:
-                    diaria = 1.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
+                    if periodo_quebrado > 0:
+                        self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(20 + (periodo * 10))
 
+                    else:
+                        self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(20 + (periodo * 10))
 
-                elif totalminutos > 725 and totalminutos <= 1445:
-                    diaria = 2.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
+                    
 
-                elif totalminutos > 1445 and totalminutos <= 2165:
-                    diaria = 3.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 2165 and totalminutos <= 2885:
-                    diaria = 4.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 2885 and totalminutos <= 3605:
-                    diaria = 5.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 3605 and totalminutos <= 4325:
-                    diaria = 6.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 4325 and totalminutos <= 5045:
-                    diaria = 7.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 5045 and totalminutos <= 5765:
-                    diaria = 8.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 5765 and totalminutos <= 6485:
-                    diaria = 9.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 6485 and totalminutos <= 7205:
-                    diaria = 10.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 7205 and totalminutos <= 7925:
-                    diaria = 11.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 7925 and totalminutos <= 8645:
-                    diaria = 12.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
-
-                elif totalminutos > 8645 and totalminutos <= 9365:
-                    diaria = 13.00
-                    self.__lbtarifa["text"] = "Valor da tarifa = R$" + str(diaria * 10)
             except TypeError:
                 pass
 
